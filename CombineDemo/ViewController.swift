@@ -12,9 +12,11 @@ enum CustomError: Swift.Error {
     case test
 }
 
-var actions: [String: () -> Void] = [:]
 
 class ViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+    var actions: [[String: Any]] = []
 
     var subscrition: AnyCancellable?
     var name: String = "" {
@@ -25,6 +27,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTests()
+        tableView.reloadData()
     }
 
     func test(name: String, handler: () -> Void) {
@@ -33,7 +37,10 @@ class ViewController: UIViewController {
     }
 
     func addTest(name: String, action: @escaping () -> Void) {
-        actions[name] = action
+        actions.append([
+            "name": name,
+            "action": action
+        ])
     }
 
     func printcompletion(completion: Subscribers.Completion<CustomError>) {
@@ -56,7 +63,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController {
-    func publish() {
+    func addTests() {
         addTest(name: "Just") {
             _ = Just("one").sink(receiveCompletion: { (completion: Subscribers.Completion<Never>) in
                 self.printcompletion(completion: completion)
@@ -148,3 +155,21 @@ extension ViewController {
 
 }
 
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        actions.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CELLID", for: indexPath)
+        cell.textLabel?.text = actions[indexPath.row]["name"] as? String
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let info = actions[indexPath.row]
+        let name = info["name"] as! String
+        let action = info["action"] as! () -> Void
+        test(name: name, handler: action)
+    }
+}
