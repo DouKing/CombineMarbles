@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "PerfectMarkdown",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Markdown.git",
+        "state": {
+          "branch": null,
+          "revision": "1820443a6a877d94694f55867e793103f6dca1dc",
+          "version": "3.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

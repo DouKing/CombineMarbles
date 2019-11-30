@@ -1,9 +1,10 @@
 //
-//  AppDelegate.swift
-//  CombineDemo
+// CombineMarbles
+// AppDelegate.swift
 //
-//  Created by DouKing on 2019/10/15.
-//
+// Created by wuyikai on 2019/10/13.
+// Copyright © 2019 wuyikai. All rights reserved.
+// 
 
 import UIKit
 
@@ -28,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
 
 }
 

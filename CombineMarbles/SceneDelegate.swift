@@ -1,9 +1,10 @@
 //
-//  SceneDelegate.swift
-//  CombineDemo
+// CombineMarbles
+// SceneDelegate.swift
 //
-//  Created by DouKing on 2019/10/15.
-//
+// Created by wuyikai on 2019/10/13.
+// Copyright © 2019 wuyikai. All rights reserved.
+// 
 
 import UIKit
 
