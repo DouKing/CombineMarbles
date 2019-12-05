@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 typealias Action = () -> Void
 
@@ -19,4 +20,15 @@ struct ConceptModel {
 struct ConceptDataSource {
     var title: String
     var list: [ConceptModel]
+}
+
+extension Subscribers.Completion: CustomStringConvertible {
+    public var description: String {
+        switch self {
+            case .finished:
+                return "finish"
+            case .failure(let error):
+                return "failure: \(error)"
+        }
+    }
 }

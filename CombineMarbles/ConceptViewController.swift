@@ -108,7 +108,7 @@ extension ConceptViewController {
         
         addTest(name: "Just", intro: "发送一个值, 立即结束") {
             _ = Just("🍌").sink(receiveCompletion: { (completion: Subscribers.Completion<Never>) in
-                self.printcompletion(completion: completion)
+                print(completion)
             }) { (element: String) in
                 print(element)
             }
@@ -120,7 +120,7 @@ extension ConceptViewController {
         
         addTest(name: "Empty", intro: "不提供新值, 立即结束") {
             _ = Empty<String, Never>(completeImmediately: true).sink(receiveCompletion: { (completion: Subscribers.Completion<Never>) in
-                self.printcompletion(completion: completion)
+                print(completion)
             }, receiveValue: { (element: String) in
                 print(element)
             }) as AnyCancellable
@@ -133,14 +133,14 @@ extension ConceptViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 print("Deferred 2 秒后")
                 _ = deferred.sink(receiveCompletion: { (completion: Subscribers.Completion<Never>) in
-                    self.printcompletion(completion: completion)
+                    print(completion)
                 }) { (element: String) in
                     print(element)
                 }
             }
             
 //            _ = Just("a").delay(for: 2, scheduler: DispatchQueue.main).sink(receiveCompletion: { (completion: Subscribers.Completion<Never>) in
-//                self.printcompletion(completion: completion)
+//                print(completion)
 //            }) { (element: String) in
 //                print("Deferred 2 秒后")
 //                print(element)
@@ -149,7 +149,7 @@ extension ConceptViewController {
         
         addTest(name: "Fail", intro: "发送一个值, 立即失败") {
             _ = Fail(error: CustomError.test).sink(receiveCompletion: { (completion: Subscribers.Completion<CustomError>) in
-                self.printcompletion(completion: completion)
+                print(completion)
             }, receiveValue: { (element: String) in
                 print(element)
             })
@@ -157,7 +157,7 @@ extension ConceptViewController {
         
         addTest(name: "Sequence", intro: "将给定序列按序发布") {
             _ = Publishers.Sequence<[String], Never>(sequence: ["🍌", "🍎", "🍐"]).sink(receiveCompletion: { (completion) in
-                self.printcompletion(completion: completion)
+                print(completion)
             }, receiveValue: { (element: String) in
                 print(element)
             })
@@ -173,7 +173,7 @@ extension ConceptViewController {
                 }
             })
             self.subscrition = publisher.sink(receiveCompletion: { (completion: Subscribers.Completion<CustomError>) in
-                self.printcompletion(completion: completion)
+                print(completion)
             }, receiveValue: { (result: String) in
                 print(result)
             })
@@ -202,7 +202,7 @@ extension ConceptViewController {
         addTest(name: "Sink", intro: "通用的订阅者") {
             let just: Just<String> = Just("🍌")
             let observer: Subscribers.Sink<String, Never> = Subscribers.Sink(receiveCompletion: { (completion) in
-                self.printcompletion(completion: completion)
+                print(completion)
             }, receiveValue: { value in
                 print(value)
             })
@@ -305,24 +305,6 @@ enum CustomError: Swift.Error {
 }
 
 extension ConceptViewController {
-    func printcompletion(completion: Subscribers.Completion<CustomError>) {
-        switch completion {
-            case .finished:
-                print("finish")
-            case .failure(let error):
-                print("failure: \(error)")
-        }
-    }
-    
-    func printcompletion(completion: Subscribers.Completion<Never>) {
-        switch completion {
-            case .finished:
-                print("finish")
-            case .failure(let error):
-                print("failure: \(error)")
-        }
-    }
-    
     func test(name: String, handler: Action) {
         print("----------- \(name) -----------")
         handler()
