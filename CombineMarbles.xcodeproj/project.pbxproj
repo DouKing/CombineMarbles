@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		004E18CC2398EAA300CE3CFF /* ConceptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E18CB2398EAA300CE3CFF /* ConceptModel.swift */; };
 		520BF5322353311D003CCEFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BF5312353311D003CCEFA /* AppDelegate.swift */; };
 		520BF5342353311D003CCEFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BF5332353311D003CCEFA /* SceneDelegate.swift */; };
 		520BF5362353311D003CCEFA /* ConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BF5352353311D003CCEFA /* ConceptViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		004E18CB2398EAA300CE3CFF /* ConceptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConceptModel.swift; sourceTree = "<group>"; };
 		520BF52E2353311D003CCEFA /* CombineMarbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineMarbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		520BF5312353311D003CCEFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		520BF5332353311D003CCEFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				520BF5312353311D003CCEFA /* AppDelegate.swift */,
 				520BF5332353311D003CCEFA /* SceneDelegate.swift */,
+				004E18CB2398EAA300CE3CFF /* ConceptModel.swift */,
 				520BF5352353311D003CCEFA /* ConceptViewController.swift */,
 				52640DCF2376F6EC003A5A1B /* ConceptDetailViewController.swift */,
 				520BF54523534E0E003CCEFA /* OperatorTableViewController.swift */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				004E18CC2398EAA300CE3CFF /* ConceptModel.swift in Sources */,
 				520BF5362353311D003CCEFA /* ConceptViewController.swift in Sources */,
 				52640DD12376F6EC003A5A1B /* ConceptDetailViewController.swift in Sources */,
 				520BF54623534E0E003CCEFA /* OperatorTableViewController.swift in Sources */,

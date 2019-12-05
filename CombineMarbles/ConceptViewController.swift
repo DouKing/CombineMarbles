@@ -9,20 +9,7 @@
 import UIKit
 import Combine
 
-typealias Action = () -> Void
-
-struct ConceptModel {
-    var name: String
-    var desc: String?
-    var action: Action
-}
-
 class ConceptViewController: UITableViewController {
-  
-    struct ConceptDataSource {
-        var title: String
-        var list: [ConceptModel]
-    }
     
     //--------------------------------------------------------------------------------
     // MARK: - Property
@@ -297,8 +284,13 @@ extension ConceptViewController {
 
     func addCancellable() {
         var list: [ConceptModel] = []
-        list.append(ConceptModel(name: "Cancellable", action: {
-            //
+        list.append(ConceptModel(name: "AnyCancellable", action: {
+            // 实现了`Cancellable`协议
+            let cancellable = AnyCancellable {
+                self.subscrition?.cancel()
+            }
+            print("取消了通知订阅,在输入框输入文字试试...")
+            cancellable.cancel()
         }))
         dataSource.append(ConceptDataSource(title: "Cancellable", list: list))
     }
