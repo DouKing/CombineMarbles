@@ -82,6 +82,7 @@ extension ConceptViewController {
         self.addSubscriber()
         self.addSubject()
         self.addCancellable()
+        self.addScheduler()
     }
     
     //--------------------------------------------------------------------------------
@@ -293,6 +294,29 @@ extension ConceptViewController {
             cancellable.cancel()
         }))
         dataSource.append(ConceptDataSource(title: "Cancellable", list: list))
+    }
+    
+    //--------------------------------------------------------------------------------
+    // MARK: - Scheduler
+    //--------------------------------------------------------------------------------
+    
+    func addScheduler() {
+        var list: [ConceptModel] = []
+        list.append(ConceptModel(name: "Scheduler", action: {
+            let publisher = Publishers.Sequence<[String], Never>(sequence: ["🏃", "🚶", "🏊‍♀️"])
+            let subscriber: Subscribers.Sink<String, Never> = Subscribers.Sink(receiveCompletion: { (completion) in
+                print("Completed with \(completion)")
+            }, receiveValue: { value in
+                print(value)
+            })
+            // subscribe(on:) 指定了上游(Publisher)  在哪个 Scheduler 上执行
+            // receive(on:)   指定了下游(Subscriber) 在哪个 Scheduler 上执行
+            publisher
+                .subscribe(on: DispatchQueue.global())
+                .receive(on: DispatchQueue.main)
+                .subscribe(subscriber)
+        }))
+        dataSource.append(ConceptDataSource(title: "Scheduler", list: list))
     }
 }
 

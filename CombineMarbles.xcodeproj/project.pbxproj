@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,6 @@
 		520BF53E2353311E003CCEFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520BF53C2353311E003CCEFA /* LaunchScreen.storyboard */; };
 		520BF54623534E0E003CCEFA /* OperatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BF54523534E0E003CCEFA /* OperatorTableViewController.swift */; };
 		52640DD12376F6EC003A5A1B /* ConceptDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52640DCF2376F6EC003A5A1B /* ConceptDetailViewController.swift */; };
-		52640DD52376FAEC003A5A1B /* PerfectMarkdown in Frameworks */ = {isa = PBXBuildFile; productRef = 52640DD42376FAEC003A5A1B /* PerfectMarkdown */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +37,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52640DD52376FAEC003A5A1B /* PerfectMarkdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +93,6 @@
 			);
 			name = CombineMarbles;
 			packageProductDependencies = (
-				52640DD42376FAEC003A5A1B /* PerfectMarkdown */,
 			);
 			productName = CombineMarbles;
 			productReference = 520BF52E2353311D003CCEFA /* CombineMarbles.app */;
@@ -126,7 +123,6 @@
 			);
 			mainGroup = 520BF5252353311D003CCEFA;
 			packageReferences = (
-				52640DD32376FAEC003A5A1B /* XCRemoteSwiftPackageReference "Perfect-Markdown" */,
 			);
 			productRefGroup = 520BF52F2353311D003CCEFA /* Products */;
 			projectDirPath = "";
@@ -358,25 +354,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		52640DD32376FAEC003A5A1B /* XCRemoteSwiftPackageReference "Perfect-Markdown" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PerfectlySoft/Perfect-Markdown.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		52640DD42376FAEC003A5A1B /* PerfectMarkdown */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 52640DD32376FAEC003A5A1B /* XCRemoteSwiftPackageReference "Perfect-Markdown" */;
-			productName = PerfectMarkdown;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 520BF5262353311D003CCEFA /* Project object */;
 }
