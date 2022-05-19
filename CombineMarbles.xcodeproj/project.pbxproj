@@ -15,6 +15,7 @@
 		520BF53B2353311E003CCEFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520BF53A2353311E003CCEFA /* Assets.xcassets */; };
 		520BF53E2353311E003CCEFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520BF53C2353311E003CCEFA /* LaunchScreen.storyboard */; };
 		520BF54623534E0E003CCEFA /* OperatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BF54523534E0E003CCEFA /* OperatorTableViewController.swift */; };
+		5257B5122834E05300CAB9BF /* OperatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257B5112834E05300CAB9BF /* OperatorViewController.swift */; };
 		52640DD12376F6EC003A5A1B /* ConceptDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52640DCF2376F6EC003A5A1B /* ConceptDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		520BF53D2353311E003CCEFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		520BF53F2353311E003CCEFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		520BF54523534E0E003CCEFA /* OperatorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTableViewController.swift; sourceTree = "<group>"; };
+		5257B5112834E05300CAB9BF /* OperatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorViewController.swift; sourceTree = "<group>"; };
 		52640DCF2376F6EC003A5A1B /* ConceptDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConceptDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 				004E18CB2398EAA300CE3CFF /* ConceptModel.swift */,
 				520BF5352353311D003CCEFA /* ConceptViewController.swift */,
 				52640DCF2376F6EC003A5A1B /* ConceptDetailViewController.swift */,
+				5257B5112834E05300CAB9BF /* OperatorViewController.swift */,
 				520BF54523534E0E003CCEFA /* OperatorTableViewController.swift */,
 				520BF5372353311D003CCEFA /* Main.storyboard */,
 				520BF53A2353311E003CCEFA /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 				520BF5362353311D003CCEFA /* ConceptViewController.swift in Sources */,
 				52640DD12376F6EC003A5A1B /* ConceptDetailViewController.swift in Sources */,
 				520BF54623534E0E003CCEFA /* OperatorTableViewController.swift in Sources */,
+				5257B5122834E05300CAB9BF /* OperatorViewController.swift in Sources */,
 				520BF5322353311D003CCEFA /* AppDelegate.swift in Sources */,
 				520BF5342353311D003CCEFA /* SceneDelegate.swift in Sources */,
 			);
@@ -302,7 +306,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CombineMarbles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CombineMarbles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
