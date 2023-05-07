@@ -121,10 +121,16 @@ extension ConceptViewController {
         
         addTest(name: "Empty", intro: "不提供新值, 立即结束") {
             _ = Empty<String, Never>(completeImmediately: true).sink(receiveCompletion: { (completion: Subscribers.Completion<Never>) in
-                print(completion)
+                print("completeImmediately true \(completion)")
             }, receiveValue: { (element: String) in
-                print(element)
-            }) as AnyCancellable
+                print("receive \(element)")
+            })
+            
+            _ = Empty<Void, Never>(completeImmediately: false).sink(receiveCompletion: { (completion: Subscribers.Completion<Never>) in
+                print("completeImmediately false\(completion)")
+            }, receiveValue: { element in
+                print("receive \(element)")
+            })
         }
         
         addTest(name: "Deferred", intro: "直到订阅时才发布元素") {
