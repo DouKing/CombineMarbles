@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CustomCombine/CustomCombine.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CombineMarbles.playground">
    </FileRef>
    <FileRef
