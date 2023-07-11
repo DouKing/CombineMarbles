@@ -33,7 +33,7 @@ class CustomCombineTests: XCTestCase {
         scanB.subscribe(sink)
         subjectA.send(sequence: 1...3, completion: .finished)
         
-        XCTAssertEqual(received, [11, 13, 16].asEvent(completion: .finished))
+        XCTAssertEqual(received, [11, 13, 16].asEvents(completion: .finished))
     }
 
     func testDeferredSubjects() throws {
@@ -67,5 +67,72 @@ class CustomCombineTests: XCTestCase {
         
         scanB.subscribe(sinkD)
         print("subjects-2", subjects)
+    }
+    
+    func testSharedSubject() {
+        let subjectA = PassthroughSubject<Int, Never>()
+        let scanB = subjectA.scan(10, +)
+
+        var receivedC = [Subscribers.Event<Int, Never>]()
+        let sinkC = scanB.sink(event: { receivedC.append($0) })
+        
+        subjectA.send(sequence: 1...2, completion: nil)
+        
+        var receivedD = [Subscribers.Event<Int, Never>]()
+        let sinkD = scanB.sink(event: { receivedD.append($0) })
+        
+        subjectA.send(sequence: 3...4, completion: .finished)
+        
+        XCTAssertEqual(receivedC, [11, 13, 16, 20].asEvents(completion: .finished))
+        XCTAssertEqual(receivedD, [13, 17].asEvents(completion: .finished))
+        
+        sinkC.cancel()
+        sinkD.cancel()
+    }
+    
+    func testMulticastSubject() {
+        let subjectA = PassthroughSubject<Int, Never>()
+        let multicastB = subjectA.scan(10, +)
+            .multicast { PassthroughSubject() }
+            .autoconnect()
+        
+        var receivedC = [Subscribers.Event<Int, Never>]()
+        let sinkC = multicastB.sink(event: { receivedC.append($0) })
+        
+        subjectA.send(sequence: 1...2, completion: nil)
+        
+        var receivedD = [Subscribers.Event<Int, Never>]()
+        let sinkD = multicastB.sink(event: { receivedD.append($0) })
+        
+        subjectA.send(sequence: 3...4, completion: .finished)
+        
+        XCTAssertEqual(receivedC, [11, 13, 16, 20].asEvents(completion: .finished))
+        XCTAssertEqual(receivedD, [16, 20].asEvents(completion: .finished))
+        
+        sinkC.cancel()
+        sinkD.cancel()
+    }
+    
+    func testCurrentValueSubject() {
+        let subjectA = PassthroughSubject<Int, Never>()
+        let multicastB = subjectA.scan(10, +)
+            .multicast { CurrentValueSubject(0) }
+            .autoconnect()
+        
+        var receivedC = [Subscribers.Event<Int, Never>]()
+        let sinkC = multicastB.sink(event: { receivedC.append($0) })
+        
+        subjectA.send(sequence: 1...2, completion: nil)
+        
+        var receivedD = [Subscribers.Event<Int, Never>]()
+        let sinkD = multicastB.sink(event: { receivedD.append($0) })
+        
+        subjectA.send(sequence: 3...4, completion: .finished)
+        
+        XCTAssertEqual(receivedC, [0, 11, 13, 16, 20].asEvents(completion: .finished))
+        XCTAssertEqual(receivedD, [13, 16, 20].asEvents(completion: .finished))
+        
+        sinkC.cancel()
+        sinkD.cancel()
     }
 }

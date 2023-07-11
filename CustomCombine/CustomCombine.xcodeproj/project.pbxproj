@@ -12,6 +12,7 @@
 		523432642A5C4EC700ED3106 /* CustomCombine.h in Headers */ = {isa = PBXBuildFile; fileRef = 523432582A5C4EC700ED3106 /* CustomCombine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5234326F2A5C4F9700ED3106 /* Subscribers+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234326D2A5C4F9700ED3106 /* Subscribers+Event.swift */; };
 		523432702A5C4F9700ED3106 /* Subject+Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234326E2A5C4F9700ED3106 /* Subject+Send.swift */; };
+		523432732A5D986A00ED3106 /* AtomicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523432722A5D986A00ED3106 /* AtomicBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		523432622A5C4EC700ED3106 /* CustomCombineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCombineTests.swift; sourceTree = "<group>"; };
 		5234326D2A5C4F9700ED3106 /* Subscribers+Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subscribers+Event.swift"; sourceTree = "<group>"; };
 		5234326E2A5C4F9700ED3106 /* Subject+Send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+Send.swift"; sourceTree = "<group>"; };
+		523432722A5D986A00ED3106 /* AtomicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				523432582A5C4EC700ED3106 /* CustomCombine.h */,
 				5234326E2A5C4F9700ED3106 /* Subject+Send.swift */,
 				5234326D2A5C4F9700ED3106 /* Subscribers+Event.swift */,
+				523432722A5D986A00ED3106 /* AtomicBox.swift */,
 			);
 			path = CustomCombine;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523432732A5D986A00ED3106 /* AtomicBox.swift in Sources */,
 				523432702A5C4F9700ED3106 /* Subject+Send.swift in Sources */,
 				5234326F2A5C4F9700ED3106 /* Subscribers+Event.swift in Sources */,
 			);

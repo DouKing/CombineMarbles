@@ -19,7 +19,7 @@ extension Subscribers.Event: Equatable where Value: Equatable, Failure: Equatabl
 }
 
 public extension Sequence {
-    func asEvent<Failure>(
+    func asEvents<Failure>(
         failure: Failure.Type,
         completion: Subscribers.Completion<Failure>? = nil
     ) -> [Subscribers.Event<Element, Failure>] {
@@ -31,9 +31,9 @@ public extension Sequence {
         return values + [Subscribers.Event.completion(completion)]
     }
     
-    func asEvent(
+    func asEvents(
         completion: Subscribers.Completion<Never>? = nil
     ) -> [Subscribers.Event<Element, Never>] {
-        asEvent(failure: Never.self, completion: completion)
+        asEvents(failure: Never.self, completion: completion)
     }
 }

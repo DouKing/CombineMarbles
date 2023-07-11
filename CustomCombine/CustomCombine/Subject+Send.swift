@@ -21,3 +21,13 @@ public extension Subject {
         }
     }
 }
+
+public extension Publisher {
+    func sink(event: @escaping ((Subscribers.Event<Self.Output, Self.Failure>) -> Void)) -> AnyCancellable {
+        self.sink {
+            event(.completion($0))
+        } receiveValue: {
+            event(.value($0))
+        }
+    }
+}
