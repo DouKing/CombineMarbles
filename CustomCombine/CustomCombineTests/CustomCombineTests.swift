@@ -135,4 +135,27 @@ class CustomCombineTests: XCTestCase {
         sinkC.cancel()
         sinkD.cancel()
     }
+    
+    func testMulticastBuffer() {
+        let subjectA = PassthroughSubject<Int, Never>()
+        let multicastB = subjectA.scan(10, +)
+            .multicast { BufferSubject(limit: Int.max) }
+            .autoconnect()
+        
+        var receivedC = [Subscribers.Event<Int, Never>]()
+        let sinkC = multicastB.sink(event: { receivedC.append($0) })
+        
+        subjectA.send(sequence: 1...2, completion: nil)
+        
+        var receivedD = [Subscribers.Event<Int, Never>]()
+        let sinkD = multicastB.sink(event: { receivedD.append($0) })
+        
+        subjectA.send(sequence: 3...4, completion: .finished)
+        
+        XCTAssertEqual(receivedC, [11, 13, 16, 20].asEvents(completion: .finished))
+        XCTAssertEqual(receivedD, [11, 13, 16, 20].asEvents(completion: .finished))
+        
+        sinkC.cancel()
+        sinkD.cancel()
+    }
 }

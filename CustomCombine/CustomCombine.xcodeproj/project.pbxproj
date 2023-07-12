@@ -13,6 +13,8 @@
 		5234326F2A5C4F9700ED3106 /* Subscribers+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234326D2A5C4F9700ED3106 /* Subscribers+Event.swift */; };
 		523432702A5C4F9700ED3106 /* Subject+Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234326E2A5C4F9700ED3106 /* Subject+Send.swift */; };
 		523432732A5D986A00ED3106 /* AtomicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523432722A5D986A00ED3106 /* AtomicBox.swift */; };
+		523432752A5DAE9300ED3106 /* BufferSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523432742A5DAE9300ED3106 /* BufferSubject.swift */; };
+		523432772A5E64E900ED3106 /* CustomSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523432762A5E64E900ED3106 /* CustomSubscription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,8 @@
 		5234326D2A5C4F9700ED3106 /* Subscribers+Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subscribers+Event.swift"; sourceTree = "<group>"; };
 		5234326E2A5C4F9700ED3106 /* Subject+Send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+Send.swift"; sourceTree = "<group>"; };
 		523432722A5D986A00ED3106 /* AtomicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicBox.swift; sourceTree = "<group>"; };
+		523432742A5DAE9300ED3106 /* BufferSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferSubject.swift; sourceTree = "<group>"; };
+		523432762A5E64E900ED3106 /* CustomSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubscription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				5234326E2A5C4F9700ED3106 /* Subject+Send.swift */,
 				5234326D2A5C4F9700ED3106 /* Subscribers+Event.swift */,
 				523432722A5D986A00ED3106 /* AtomicBox.swift */,
+				523432742A5DAE9300ED3106 /* BufferSubject.swift */,
+				523432762A5E64E900ED3106 /* CustomSubscription.swift */,
 			);
 			path = CustomCombine;
 			sourceTree = "<group>";
@@ -201,6 +207,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523432772A5E64E900ED3106 /* CustomSubscription.swift in Sources */,
+				523432752A5DAE9300ED3106 /* BufferSubject.swift in Sources */,
 				523432732A5D986A00ED3106 /* AtomicBox.swift in Sources */,
 				523432702A5C4F9700ED3106 /* Subject+Send.swift in Sources */,
 				5234326F2A5C4F9700ED3106 /* Subscribers+Event.swift in Sources */,
