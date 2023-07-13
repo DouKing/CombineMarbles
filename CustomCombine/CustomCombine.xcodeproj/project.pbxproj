@@ -15,6 +15,7 @@
 		523432732A5D986A00ED3106 /* AtomicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523432722A5D986A00ED3106 /* AtomicBox.swift */; };
 		523432752A5DAE9300ED3106 /* BufferSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523432742A5DAE9300ED3106 /* BufferSubject.swift */; };
 		523432772A5E64E900ED3106 /* CustomSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523432762A5E64E900ED3106 /* CustomSubscription.swift */; };
+		523432B32A602D2800ED3106 /* MergeSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523432B22A602D2800ED3106 /* MergeSink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		523432722A5D986A00ED3106 /* AtomicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicBox.swift; sourceTree = "<group>"; };
 		523432742A5DAE9300ED3106 /* BufferSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferSubject.swift; sourceTree = "<group>"; };
 		523432762A5E64E900ED3106 /* CustomSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubscription.swift; sourceTree = "<group>"; };
+		523432B22A602D2800ED3106 /* MergeSink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				523432722A5D986A00ED3106 /* AtomicBox.swift */,
 				523432742A5DAE9300ED3106 /* BufferSubject.swift */,
 				523432762A5E64E900ED3106 /* CustomSubscription.swift */,
+				523432B22A602D2800ED3106 /* MergeSink.swift */,
 			);
 			path = CustomCombine;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				523432732A5D986A00ED3106 /* AtomicBox.swift in Sources */,
 				523432702A5C4F9700ED3106 /* Subject+Send.swift in Sources */,
 				5234326F2A5C4F9700ED3106 /* Subscribers+Event.swift in Sources */,
+				523432B32A602D2800ED3106 /* MergeSink.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

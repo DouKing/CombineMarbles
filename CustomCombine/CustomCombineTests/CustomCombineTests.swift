@@ -158,4 +158,28 @@ class CustomCombineTests: XCTestCase {
         sinkC.cancel()
         sinkD.cancel()
     }
+    
+    func testMergeInput() {
+        let subject1 = PassthroughSubject<Int, Never>()
+        let subject2 = PassthroughSubject<Int, Never>()
+        let input = MergeInput<Int>()
+        
+        subject1.merge(into: input)
+        subject2.merge(into: input)
+        
+        var received = [Subscribers.Event<Int, Never>]()
+        
+        let sink = input.sink(receiveCompletion: {
+            received.append(.completion($0))
+        }, receiveValue: {
+            received.append(.value($0))
+        })
+        
+        subject1.send(sequence: 1...2, completion: .finished)
+        subject2.send(sequence: 3...4, completion: .finished)
+        
+        XCTAssertEqual(received, [1, 2, 3, 4].asEvents(completion: nil))
+        
+        sink.cancel()
+    }
 }
