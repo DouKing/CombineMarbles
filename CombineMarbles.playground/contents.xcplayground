@@ -3,5 +3,6 @@
     <pages>
         <page name='CustomSubscriber'/>
         <page name='CustomPublisher'/>
+        <page name='CustomOperator'/>
     </pages>
 </playground>
