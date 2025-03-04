@@ -660,7 +660,16 @@ extension OperatorViewController {
             cancellable.cancel()
         }
         
-        test(name: "switchToLatest", intro: "") {            
+        test(name: "switchToLatest", intro: "") {
+            [Just("🍌"), Just("🍊"), Just("🍐")]
+                .map { $0.delay(for: 2, scheduler: DispatchQueue.main) }
+                .publisher
+                .switchToLatest()
+                .sink(receiveValue: { fruit in
+                    print("1", fruit)
+                })
+                .store(in: &self.cancels)
+            
             let fruits = ["🍌", "🍊", "🍐"]
             var index = 0
             
@@ -680,19 +689,19 @@ extension OperatorViewController {
             taps.map { _ in getFruit() }
                 .switchToLatest()
                 .sink {
-                    print($0)
+                    print("2", $0)
                 }
                 .store(in: &self.cancels)
             
             //get 🍊
-            DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 index += 1
                 taps.send()
             }
             
             //get 🍐
             // overwrites the 🍊 due to switch to latest
-            DispatchQueue.main.asyncAfter(deadline: .now() + 6.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
                 index += 1
                 taps.send()
             }
