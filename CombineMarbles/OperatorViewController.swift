@@ -28,6 +28,7 @@ class OperatorViewController: UIViewController {
     
     private var dataSource: UICollectionViewDiffableDataSource<String, Item>! = nil
     private var collectionView: UICollectionView! = nil
+    private var cancels: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -659,12 +660,42 @@ extension OperatorViewController {
             cancellable.cancel()
         }
         
-        test(name: "switchToLatest", intro: "") {
-            _ = [Just("🍌"), Just("🍊"), Just("🍐")].publisher
+        test(name: "switchToLatest", intro: "") {            
+            let fruits = ["🍌", "🍊", "🍐"]
+            var index = 0
+            
+            func getFruit() -> AnyPublisher<String, Never> {
+                return Future<String, Never> { promise in
+                    //simulate delay for download
+                    DispatchQueue.global().asyncAfter(deadline: .now() + 3.0) {
+                        promise(.success(fruits[index % fruits.count]))
+                    }
+                }.map { $0 }
+                .receive(on: RunLoop.main)
+                .eraseToAnyPublisher()
+            }
+            
+            let taps = PassthroughSubject<Void, Never>()
+            
+            taps.map { _ in getFruit() }
                 .switchToLatest()
-                .sink(receiveValue: { fruit in
-                    print(fruit)
-                })
+                .sink {
+                    print($0)
+                }
+                .store(in: &self.cancels)
+            
+            //get 🍊
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+                index += 1
+                taps.send()
+            }
+            
+            //get 🍐
+            // overwrites the 🍊 due to switch to latest
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.5) {
+                index += 1
+                taps.send()
+            }
         }
         
         test(name: "share", intro: "分享上游 Publisher 的值，供多个 Subscriber 订阅") {
