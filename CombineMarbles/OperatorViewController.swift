@@ -28,6 +28,7 @@ class OperatorViewController: UIViewController {
     
     private var dataSource: UICollectionViewDiffableDataSource<String, Item>! = nil
     private var collectionView: UICollectionView! = nil
+    private var cancels: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -660,11 +661,50 @@ extension OperatorViewController {
         }
         
         test(name: "switchToLatest", intro: "") {
-            _ = [Just("🍌"), Just("🍊"), Just("🍐")].publisher
+            [Just("🍌"), Just("🍊"), Just("🍐")]
+                .map { $0.delay(for: 2, scheduler: DispatchQueue.main) }
+                .publisher
                 .switchToLatest()
                 .sink(receiveValue: { fruit in
-                    print(fruit)
+                    print("1", fruit)
                 })
+                .store(in: &self.cancels)
+            
+            let fruits = ["🍌", "🍊", "🍐"]
+            var index = 0
+            
+            func getFruit() -> AnyPublisher<String, Never> {
+                return Future<String, Never> { promise in
+                    //simulate delay for download
+                    DispatchQueue.global().asyncAfter(deadline: .now() + 3.0) {
+                        promise(.success(fruits[index % fruits.count]))
+                    }
+                }.map { $0 }
+                .receive(on: RunLoop.main)
+                .eraseToAnyPublisher()
+            }
+            
+            let taps = PassthroughSubject<Void, Never>()
+            
+            taps.map { _ in getFruit() }
+                .switchToLatest()
+                .sink {
+                    print("2", $0)
+                }
+                .store(in: &self.cancels)
+            
+            //get 🍊
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                index += 1
+                taps.send()
+            }
+            
+            //get 🍐
+            // overwrites the 🍊 due to switch to latest
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                index += 1
+                taps.send()
+            }
         }
         
         test(name: "share", intro: "分享上游 Publisher 的值，供多个 Subscriber 订阅") {
